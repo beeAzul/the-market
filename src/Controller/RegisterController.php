@@ -30,6 +30,7 @@ class RegisterController extends AbstractController
      */
     public function index(Request $request, UserPasswordHasherInterface $hasher ): Response
     {
+        $registered = false;
         // Init a User model
         $user = new User();
         // Creation of the Register form
@@ -45,10 +46,13 @@ class RegisterController extends AbstractController
             $user->setPassword($hashedPassword);
             $this->em->persist($user);
             $this->em->flush();
+            $registered = true;
         }
 
         return $this->render('register/index.html.twig', [
             'form' => $form->createView(),
+            'registered' => $registered,
+            'submitted' => $form->isSubmitted()
         ]);
     }
 }

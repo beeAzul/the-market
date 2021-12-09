@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+        <div class="row {{ submitted ? 'd-block' : 'd-none'}}"><div class="col-12">
+                <div class="alert {{ registered ? 'alert-success' : 'alert-danger' }}" role="alert">
+                    {{ registered ? 'Account created' : 'An error occured' }}
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
                 {{ form(form) }}
