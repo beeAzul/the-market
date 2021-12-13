@@ -29,6 +29,7 @@ To ensure of the creation of user table, I run the commands bellow
 #### Creation of Home page
 I use a Bootstrap Template to start the project. It helps to get results during the development.
 The assets folder is in template folder
+route: the-market.local
 
 ####Creation of Register page
 I follow this Form workflow :
@@ -39,6 +40,8 @@ I follow this Form workflow :
 - Render the form in a template : templates/register/index.html.twig;<br>
 - Process the form to validate the submitted data;
 
+route: the-market/register
+
 ####Creation of Login page
 Creation of guard authenticator to handle login and logout. All users authenticated will get a role 'ROLE_USER'<br>
 ` $ php console make:auth`<br>
@@ -48,7 +51,7 @@ this creates the class LoginFormAuthenticator which contains all the methods to 
 `created: templates/security/login.html.twig.php`<br>
 
 All users authenticated will bi redirected to account route which is private.
-
+route: the-market.local/login
 ###Creations of the remaining entities
 
 • Product (id, name, price, tax, stock).<br />
@@ -77,9 +80,11 @@ And we can create menu items by adding all the menus needed directly in the 'con
 To activate crud on entities, we have to create controllers to manage it with the command bellow. This commands must be executed for all the entities: <br>
 `$ php bin/console make:admin:crud`
 
+route : the-market.local/admin (visible only for registered admin users. Add role 'ROLE_ADMIN' in the role column in user table)
 
 ###Creation of products page for public users
 
+route : the-market.local/products
 
 
 
